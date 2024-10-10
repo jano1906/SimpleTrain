@@ -24,7 +24,7 @@ class EngineCfg:
 class _RunCfg:
     @classmethod
     def RESUME(cls) -> bool:
-        return bool(os.environ.get("RESUME", False))
+        return bool(int(os.environ.get("RESUME", "0")))
     @classmethod
     def EXP_NAME(cls) -> str:
         return os.environ.get("EXP_NAME", "_tmp")

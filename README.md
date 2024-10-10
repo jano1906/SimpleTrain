@@ -1,5 +1,3 @@
-# Simple training starting point
-
 ## Getting started
 Install python 3.11
 ```bash
@@ -33,7 +31,7 @@ tensorboard --logdir runs
 ```
 
 ## Assumptions
-1. The goal of the `simple_lib` library is to help producing trained model checkpoints.
+1. The goal of the `simple_lib` library is to help producing trained model checkpoints
 2. An application using `simple_lib` is responsible for building the model with appropriate signature and passing it to the `simple_lib` training function 
 
 ## Code structure
@@ -42,7 +40,7 @@ tensorboard --logdir runs
     - data - download datasets from the web, preprocess the data
     - logging - setup stdout logger for instant feedback
     - nn - a library of commonly used modules/models
-    - resources - files bundled for ease of usage
+    - resources - files bundled for ease of use
     - training:
         - train_bert - file with the definition of bert training loop
         - train_*xyz* - file with the definition of *xyz* training loop
