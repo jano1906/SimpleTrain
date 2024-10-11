@@ -58,10 +58,11 @@ class BertDataset(Dataset[BertSample]):
         )
     
     def get_collate_fn(self, stats: TokenizedDataStats):
+        max_input_len = stats.max_sample_len + len(self.cls_ids)
         def collate(batch: list[BertSample]):
             return BertSample(
-                masked_encoder_in=torch.stack([F.pad(x.masked_encoder_in, (0, stats.max_sample_len-len(x.masked_encoder_in)), value=self.pad_id) for x in batch]),
-                masked_idx=torch.concat([x.masked_idx + i*stats.max_sample_len for i, x in enumerate(batch)]),
+                masked_encoder_in=torch.stack([F.pad(x.masked_encoder_in, (0, max_input_len-len(x.masked_encoder_in)), value=self.pad_id) for x in batch]),
+                masked_idx=torch.concat([x.masked_idx + i*max_input_len for i, x in enumerate(batch)]),
                 target=torch.concat([x.target for x in batch])
             )
         return collate
