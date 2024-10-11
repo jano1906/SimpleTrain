@@ -1,0 +1,4 @@
+sentencepiece
+matplotlib
+mypy
+tensorboard
